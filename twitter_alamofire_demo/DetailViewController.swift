@@ -11,39 +11,30 @@ import UIKit
 class DetailViewController: UIViewController {
 
     @IBOutlet weak var detailImage: UIImageView!
-    
     @IBOutlet weak var detailNameLabel: UILabel!
-    
     @IBOutlet weak var detailHandleLabel: UILabel!
-    
     @IBOutlet weak var detailDateLabel: UILabel!
-    
     @IBOutlet weak var detailTweetLabel: UILabel!
-    
     @IBOutlet weak var detailRetweetBtn: UIButton!
-    
     @IBOutlet weak var detailFavoriteBtn: UIButton!
+
     
-    @IBAction func homeBtn(_ sender: Any) {
-        self.performSegue(withIdentifier: "homeSegue", sender: nil)
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        //refreshData()
+//        if let tweet = tweet {
+//            let profileImage = NSURL(string: tweet.user!.profileImage!)
+//            detailImage.setImageWith(profileImage! as URL)
+//            detailNameLabel.text = tweet.user!.name
+//            detailHandleLabel.text = "@" + tweet.user!.screenName!
+//            detailTweetLabel.text = tweet.text
+//            detailDateLabel.text = tweet.createdAtString
+//
+//            }
+//        }
     }
-    
-//    override func viewDidLoad() {
-//        super.viewDidLoad()
-//        refreshData()
-////        if let tweet = tweet {
-////            let profileImage = NSURL(string: tweet.user!.profileImage!)
-////            detailImage.setImageWith(profileImage! as URL)
-////            detailNameLabel.text = tweet.user!.name
-////            detailHandleLabel.text = "@" + tweet.user!.screenName!
-////            detailTweetLabel.text = tweet.text
-////            detailDateLabel.text = tweet.createdAtString
-////
-////            }
-////        }
-//    }
-//
-//
+
+
 //    @IBAction func onRetweet(_ sender: AnyObject) {
 //        //
 //        if(tweet.retweeted == false){
@@ -132,7 +123,7 @@ class DetailViewController: UIViewController {
 //    if(tweet.retweeted==false){
 //        detailRetweetBtn.setImage(#imageLiteral(resourceName: "retweet-icon"), for: .normal)
 //    }
-//
+
     
 }
 
