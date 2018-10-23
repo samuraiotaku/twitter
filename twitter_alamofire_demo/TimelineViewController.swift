@@ -14,6 +14,7 @@ class TimelineViewController: UIViewController, UITableViewDelegate, UITableView
     var valueToPass: String!
     
     
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return tweets.count
     }
@@ -31,7 +32,14 @@ class TimelineViewController: UIViewController, UITableViewDelegate, UITableView
     @IBAction func onTapLogout(_ sender: Any) {
         APIManager.shared.logout()
         self.performSegue(withIdentifier: "logoutSegue", sender: nil)
+        
+        
     }
+    
+    @IBAction func composeBtn(_ sender: UIBarButtonItem) {
+        self.performSegue(withIdentifier: "composeSegue", sender: nil)
+    }
+    
     
     
     override func viewDidLoad() {
@@ -74,9 +82,17 @@ class TimelineViewController: UIViewController, UITableViewDelegate, UITableView
         // ... Use the new data to update the data source ...
         getHomeTimeline()
         
+        APIManager.shared.getHomeTimeLine{(tweets, error) in
+            if let tweets = tweets {
+                self.tweets = tweets
+                self.tableView.reloadData()
+            } else if let error = error {
+                print("Error getting home timeline: " + error.localizedDescription)
+            }
+        }
+        
         // Reload the tableView now that there is new data
         self.tableView.reloadData()
-        
         // Tell the refreshControl to stop spinning
         refreshControl.endRefreshing()
         
@@ -92,5 +108,18 @@ class TimelineViewController: UIViewController, UITableViewDelegate, UITableView
                 print("Error getting home timeline: " + error.localizedDescription)
             }
         }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let detailViewController = segue.destination as? DetailViewController {
+            let cell = sender as! UITableViewCell
+            if let indexPath = tableView.indexPath(for: cell){
+                let tweet = tweets[indexPath.row]
+                detailViewController.tweet = tweet
+                //still need to add Detail View
+            }
+            
+        }
+        
     }
 }

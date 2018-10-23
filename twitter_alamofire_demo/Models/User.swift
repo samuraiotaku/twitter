@@ -25,6 +25,10 @@ class User {
     var user: User?
     var createdAtString: String?
     
+    var followersCount: String
+    var followingCount: String
+    var statusesCount: String
+    
     static var current: User?
 
     
@@ -34,6 +38,10 @@ class User {
         screenName = dictionary["screen_name"] as? String
         profileImage = dictionary["profile_image_url_https"] as? String
         profileImageUrl = URL(string:dictionary["profile_image_url_https"] as! String)!
+        
+        followersCount = String(dictionary["followers_count"] as! Int)
+        followingCount = String(dictionary["friends_count"] as! Int)
+        statusesCount = String(dictionary["friends_count"] as! Int)
     }
         
 }

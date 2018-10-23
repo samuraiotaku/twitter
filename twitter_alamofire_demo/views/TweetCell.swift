@@ -12,20 +12,13 @@ import AFNetworking
 class TweetCell: UITableViewCell {
 
     @IBOutlet weak var profileView: UIImageView!
-    
     @IBOutlet weak var nameLabel: UILabel!
-    
     @IBOutlet weak var accountNameLabel: UILabel!
-    
     @IBOutlet weak var dateLabel: UILabel!
-    
     @IBOutlet weak var tweetTextLabel: UILabel!
-    
     @IBOutlet weak var favoriteBtn: UIButton!
-    
     @IBOutlet weak var retweetBtn: UIButton!
-    
-    
+
     @IBAction func didTapRetweet(_ sender: Any) {
         //
         if(tweet.retweeted == false){
